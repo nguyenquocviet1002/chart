@@ -154,8 +154,8 @@
       let data = document.getElementById("data");
       let value = [title.value, Number(data.value)];
       dataArray.push(value);
-      title = "";
-      data = "";
+      title.value = "";
+      data.value = "";
       renderChart();
       addDataToList();
     });
