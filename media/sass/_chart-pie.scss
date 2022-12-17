@@ -106,6 +106,13 @@
         div {
             flex: 1;
         }
+        input{
+            font-weight: 500;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            border: none;
+            background-color: transparent;
+        }
     }
 
     &__group {

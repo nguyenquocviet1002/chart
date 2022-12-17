@@ -3782,6 +3782,13 @@ ul.tabs li {
 .list__title div {
   flex: 1;
 }
+.list__title input {
+  font-weight: 500;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  border: none;
+  background-color: transparent;
+}
 .list__group {
   display: flex;
   align-items: center;
