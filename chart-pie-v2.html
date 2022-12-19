@@ -361,6 +361,13 @@
 
     renderChart();
     renderListData();
+
+    var inputTypeNumbers = document.querySelectorAll("input[type=number]");
+    for (var a = 0; a < inputTypeNumbers.length; a++) {
+      inputTypeNumbers[a].onwheel = function (event) {
+        event.target.blur();
+      };
+    }
   </script>
 </body>
 
