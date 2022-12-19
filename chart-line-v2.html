@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Báo cáo doanh thu năm 2022</title>
+
+  <link rel="stylesheet" href="media/sass/style.css">
+  <link href="//fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet" type="text/css" />
+  <script nonce="undefined" src="https://cdn.zingchart.com/zingchart.min.js"></script>
+</head>
+
+<body>
+  <div class="topnav" id="myTopnav">
+    <div class="container">
+      <div class="nav__flex">
+        <a href="#" class="topnav__logo">Logo</a>
+        <a href="index.html" class="topnav__item">Chart Column Ver 1</a>
+        <a href="chart-colum.html" class="topnav__item">Chart Column Ver 2</a>
+        <a href="chart-line.html" class="topnav__item">Chart Line Ver 1</a>
+        <a href="chart-line-v2.html" class="topnav__item active">Chart Line Ver 2</a>
+        <a href="chart-pie.html" class="topnav__item">Chart Pie Ver 1</a>
+        <a href="chart-pie-v2.html" class="topnav__item">Chart Pie Ver 2</a>
+        <div class="iconMenu" id="icon">
+          <div class="iconMenu__item iconMenu__item--1"></div>
+          <div class="iconMenu__item iconMenu__item--2"></div>
+          <div class="iconMenu__item iconMenu__item--3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="box__chart">
+      <div id="myChart" class="chart--container" style="width: 100%; max-width: 100%; height: 500px">
+        <a class="zc-ref" href="https://www.zingchart.com/">Powered by ZingChart</a>
+      </div>
+      <div class="list">
+        <div class="list__title">
+          <div>Tháng</div>
+          <div>Data</div>
+        </div>
+        <div id="list__data"></div>
+      </div>
+      <div class="save__chart">
+        <button type="submit" id="save" class="button button--gradientGreen">Lưu</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    const dataLocal = localStorage.getItem("data-line2");
+    if (!dataLocal) {
+      var myConfig = {
+        type: 'area',
+        title: {
+          text: 'Báo cáo năm 2022',
+          adjustLayout: true,
+          fontColor: '#424242',
+          marginTop: '15px',
+        },
+        plot: {
+          tooltip: {
+            visible: false,
+          },
+          alphaArea: 0.6,
+          aspect: 'spline',
+          stacked: true,
+        },
+        plotarea: {
+          margin: 'dynamic',
+        },
+        scaleX: {
+          item: {
+            fontColor: '#616161',
+            paddingTop: '5px',
+          },
+          label: {
+            fontColor: '#616161',
+            text: '2022',
+          },
+          labels: [
+            "Tháng<br>1",
+            "Tháng<br>2",
+            "Tháng<br>3",
+            "Tháng<br>4",
+            "Tháng<br>5",
+            "Tháng<br>6",
+            "Tháng<br>7",
+            "Tháng<br>8",
+            "Tháng<br>9",
+            "Tháng<br>10",
+            "Tháng<br>11",
+          ],
+          lineColor: '#AAA5A5',
+          tick: {
+            lineColor: '#AAA5A5',
+          },
+        },
+        scaleY: {
+          guide: {
+            lineColor: '#AAA5A5',
+            lineStyle: 'dotted',
+          },
+          item: {
+            fontColor: '#616161',
+            paddingRight: '5px',
+          },
+          label: {
+            fontColor: '#616161',
+            text: 'Quantity',
+          },
+          lineColor: '#AAA5A5',
+          short: true,
+          shortUnit: 'k',
+          tick: {
+            lineColor: '#AAA5A5',
+          },
+        },
+        crosshairX: {
+          lineColor: '#AAA5A5',
+          plotLabel: {
+            backgroundColor: '#EBEBEC',
+            borderColor: '#AAA5A5',
+            borderRadius: '2px',
+            borderWidth: '2px',
+            fontColor: '#616161',
+            thousandsSeparator: ',',
+          },
+          scaleLabel: {
+            backgroundColor: '#EBEBEC',
+            borderColor: '#AAA5A5',
+            fontColor: '#424242',
+          },
+        },
+        series: [
+          {
+            text: 'Data',
+            values: [3435, 4212, 1627, 3189, 2325, 1334, 1567, 2685, 3435, 3189, 2685],
+            backgroundColor: '#4CAF50',
+            lineColor: '#4CAF50',
+            marker: {
+              backgroundColor: '#4CAF50',
+              borderColor: '#4CAF50',
+            },
+          },
+        ],
+      };
+    } else {
+      var myConfig = JSON.parse(dataLocal);
+    }
+
+    const renderChart = () => {
+      ZC.LICENSE = [
+        "569d52cefae586f634c54f86dc99e6a9",
+        "b55b025e438fa8a98e32482b5f768ff5",
+      ];
+
+      zingchart.render({
+        id: "myChart",
+        data: myConfig,
+        height: "100%",
+        width: "100%",
+      });
+    };
+
+    const renderListData = () => {
+      let html = "";
+      let dataValue = myConfig.series;
+      for (let i = 0; i < 11; i++) {
+        html += `
+              <div class="list__group">
+                <div class="list__control">
+                  <input type="text" disabled value="Tháng ${i + 1}">
+                </div>
+               
+                <div class="list__control list__item">
+                  <input type="number" class="dataKangnam dataKangnam${i}" value="${dataValue[0].values[i]}">
+                </div>
+              </div>
+            `;
+      }
+      document.getElementById("list__data").insertAdjacentHTML("beforeend", html);
+    };
+    renderListData();
+    renderChart();
+
+    document.getElementById("save").addEventListener("click", function (e) {
+      e.preventDefault();
+      let elms = document.querySelectorAll(".list__item .dataKangnam");
+      let dataValueKn = [];
+      [...elms].map((item, index) => {
+        let valueKn = item.value;
+        dataValueKn.push(Number(valueKn));
+      });
+      Object.assign(myConfig.series[0].values, dataValueKn);
+      const myJSON = JSON.stringify(myConfig);
+      localStorage.setItem("data-line2", myJSON);
+      renderChart();
+    });
+  </script>
+</body>
+
+</html>
