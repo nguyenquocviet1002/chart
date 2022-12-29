@@ -91,6 +91,7 @@
             "Tháng<br>9",
             "Tháng<br>10",
             "Tháng<br>11",
+            "Tháng<br>12"
           ],
           lineColor: '#AAA5A5',
           tick: {
@@ -111,7 +112,7 @@
             text: 'Quantity',
           },
           lineColor: '#AAA5A5',
-          short: true,
+          short: false,
           shortUnit: 'k',
           tick: {
             lineColor: '#AAA5A5',
@@ -136,7 +137,7 @@
         series: [
           {
             text: 'Data',
-            values: [3435, 4212, 1627, 3189, 2325, 1334, 1567, 2685, 3435, 3189, 2685],
+            values: [3435, 4212, 1627, 3189, 2325, 1334, 1567, 2685, 3435, 3189, 2685, 1254],
             backgroundColor: '#4CAF50',
             lineColor: '#4CAF50',
             marker: {
@@ -167,7 +168,7 @@
     const renderListData = () => {
       let html = "";
       let dataValue = myConfig.series;
-      for (let i = 0; i < 11; i++) {
+      for (let i = 0; i < 12; i++) {
         html += `
               <div class="list__group">
                 <div class="list__control">
