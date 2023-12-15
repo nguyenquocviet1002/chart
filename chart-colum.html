@@ -18,7 +18,7 @@
         <a href="chart-colum.html" class="topnav__item active">Chart Column Ver 2</a>
         <a href="chart-line.html" class="topnav__item">Chart Line Ver 1</a>
         <a href="chart-line-v2.html" class="topnav__item">Chart Line Ver 2</a>
-        <a href="chart-pie.html" class="topnav__item">Chart Pie Ver 1</a>
+        <a href="chart-pie.html" class="topnav__item">Doanh số</a>
         <a href="chart-pie-v2.html" class="topnav__item">Chart Pie Ver 2</a>
         <div class="iconMenu" id="icon">
           <div class="iconMenu__item iconMenu__item--1"></div>
@@ -59,7 +59,7 @@
 
     const dataLocal = localStorage.getItem("data-v2");
     if (!dataLocal) {
-      var dataValue = [['Tháng', 'Data'], ['Tháng 1', 1], ['Tháng 2', 2], ['Tháng 3', 3], ['Tháng 4', 4], ['Tháng 5', 5], ['Tháng 6', 6], ['Tháng 7', 7], ['Tháng 8', 8], ['Tháng 9', 9], ['Tháng 10', 10], ['Tháng 11', 11]];
+      var dataValue = [['Tháng', 'Data'], ['Tháng 1', 1], ['Tháng 2', 2], ['Tháng 3', 3], ['Tháng 4', 4], ['Tháng 5', 5], ['Tháng 6', 6], ['Tháng 7', 7], ['Tháng 8', 8], ['Tháng 9', 9], ['Tháng 10', 10], ['Tháng 11', 11], ['Tháng 12', 12]];
     } else {
       var dataValue = JSON.parse(dataLocal);
     }
@@ -68,7 +68,7 @@
       document.querySelector(".title__data").value = dataValue[0][1];
 
       let html = "";
-      for (let i = 0; i < 11; i++) {
+      for (let i = 0; i < 12; i++) {
         html += `
               <div class="list__group">
                 <div class="list__control">
